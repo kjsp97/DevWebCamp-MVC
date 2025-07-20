@@ -1,0 +1,36 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+@use 'sass:color';
+
+.bloques{
+    @include m.contenedor;
+    @include m.grid(1, 3rem);
+    @include m.tablet{
+        margin-top: 5rem;
+        @include m.grid(2, 3rem);
+    }
+}
+
+.bloque{
+    padding: 2rem 4rem;
+    border-radius: 1rem;
+    color: v.$blanco;
+    &:nth-child(1){
+        @include m.bg-gradient(#68a928);
+    }
+    &:nth-child(2){
+        @include m.bg-gradient(#1684f9);
+    }
+    &:nth-child(3){
+        @include m.bg-gradient(#3946ba);
+    }
+    &:nth-child(4){
+        @include m.bg-gradient(#088fce);
+    }
+    &__texto--ingresos{
+        margin-top: 3rem;
+        font-size: 6rem;
+        text-align: center;
+        font-weight: v.$fw-black;
+    }
+}

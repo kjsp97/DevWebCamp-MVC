@@ -1,0 +1,61 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.header{
+    display: flex;
+    flex-direction: column-reverse;
+    background-image: url(../img/grafico.svg), linear-gradient(to right, rgba(v.$negro, 1), rgba(v.$negro, 0.6)), image-set(url(../img/header.webp), url(../img/header.jpg));
+    background-repeat: no-repeat;
+    background-size: 40rem, cover, cover;
+    background-position: bottom right, center center, center center;
+    min-height: 30rem;
+    @include m.tablet{
+        min-height: 40rem;
+        flex-direction: column;
+    }
+    &__contenedor{
+        padding: 3rem 0;
+        @include m.contenedor;
+        @include m.tablet{
+            padding-bottom: unset;
+        }
+    }
+
+    &__logo{
+        text-align: center;
+        @include m.texto-degradado(v.$azul, v.$secundario);
+        @include m.texto-fluido(2rem, 8rem);
+        @include m.tablet{
+            text-align: left;
+            display: inline-block;
+        }
+        &:hover{
+            @include m.texto-degradado(v.$secundario, v.$azul);
+        }
+    }
+
+    &__texto{
+        color: v.$blanco;
+        font-size: 3.5rem;
+        font-weight: v.$fw-bold;
+        text-align: center;
+        margin-top: unset;
+        margin-bottom: 1rem;
+        @include m.tablet{
+            text-align: left;
+        }
+        &--modalidad{
+            text-transform: uppercase;
+            font-size: 2rem;
+            margin-bottom: 2.5rem;
+        }
+    }
+
+    &__boton{
+        text-transform: uppercase;
+        @include m.boton(v.$secundario, v.$blanco);
+        @include m.tablet{
+            width: auto;
+        }
+    }
+}

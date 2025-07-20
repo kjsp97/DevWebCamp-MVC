@@ -1,0 +1,56 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+@use 'sass:color';
+
+.ponentes{
+    &__grid{
+        @include m.contenedor;
+        @include m.grid(1, 4rem);
+        @include m.tablet{
+            @include m.grid(2, 4rem);
+        }
+        @include m.desktop{
+            @include m.grid(3, 4rem);
+        }
+    }
+}
+
+.ponente{
+    @include m.card;
+    @for $i from 1 through 4 {
+        &:nth-child(4n + #{$i}){
+            background-image: image-set(url('../img/bg_#{$i}.webp'), url('../img/bg_#{$i}.jpeg'));
+            background-position: center top;
+            background-size: 30rem;
+            background-repeat: no-repeat;
+        }
+    }
+    &__imagen{
+        min-width: 30rem;
+        @include m.tablet{
+            min-width: unset;
+        }
+    }
+    &__nombre{
+        margin: 1rem 0;
+        font-weight: v.$fw-black;
+        font-size: 2rem;
+        text-align: left;
+    }
+    &__origen{
+        color: v.$gris;
+    }
+    &__habilidades{
+        @include m.tags;
+        >li{
+            cursor: default;
+        }
+    }
+}
+
+.ponente-redes{
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+    @include m.menu-redes(v.$negro, 3rem);
+}

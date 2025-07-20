@@ -1,0 +1,15 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+@use 'sass:color';
+
+.alerta{
+    margin: 1rem;
+    text-transform: uppercase;
+
+    &__error{
+        color: v.$rojo;
+    }
+    &__ok{
+        color: v.$verde;
+    }
+}

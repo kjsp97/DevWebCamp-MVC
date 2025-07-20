@@ -1,0 +1,85 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+@use 'sass:color';
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    margin: 3rem 0;
+
+    &__fieldset{
+        border: unset;
+    }
+
+    &__legend{
+        margin-bottom: 2rem;
+        font-size: 2rem;
+        color: color.adjust(v.$gris-oscuro, $lightness: 20%);
+    }
+    
+    &__label{
+        color: color.adjust(v.$gris-oscuro, $lightness: 20%);
+        display: block;
+        font-size: 1.8rem;
+        span{
+            color: rgb(168, 168, 168);
+            font-size: 1.4rem;
+        }
+    }
+
+    &__campo{
+        display: flex;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+        flex-direction: column;
+    }
+    &__input{
+        flex: 1;
+        padding: 1rem 2rem;
+        border: 1px solid color.adjust(v.$gris, $lightness: 40%);
+        border-radius: 1rem;
+        resize: none;
+        &--file{
+            border: unset;
+        }
+        &--icono{
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+    }
+
+    &__submit{
+        @include m.boton(v.$azul, v.$blanco);
+        width: auto;
+        align-self: flex-end;
+        &--registro{
+            width: 100%;
+        }
+    }
+
+    &__contenedor-icono{
+        display: flex;
+    }
+    &__icono{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: v.$gris-oscuro;
+        width: 4rem;
+        border-radius: 0.5rem 0rem 0rem 0.5rem;
+        i{
+            color: v.$blanco;
+        }
+    }
+
+    &__listado{
+        @include m.tags;
+    }
+
+    &__imagen{
+        max-width: 20rem;
+    }
+    &__radio{
+        display: flex;
+        gap: 2rem;
+    }
+}

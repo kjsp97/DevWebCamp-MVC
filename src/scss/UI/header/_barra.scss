@@ -1,0 +1,24 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+@use 'sass:color';
+
+
+.header__barra{
+    background-color: v.$negro;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    @include m.tablet{
+        padding: 0 3rem;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .logo{
+        display: none;
+        @include m.logo;
+        @include m.tablet{
+            display: block;
+        }
+    }
+}

@@ -1,0 +1,202 @@
+@use 'variables' as v;
+@use 'sass:color';
+
+/** Media Queries **/
+@mixin movil {
+    @media (min-width: v.$movil) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: v.$tablet) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: v.$desktop) {
+        @content;
+    }
+}
+
+@mixin xl_desktop {
+    @media (min-width: v.$xl_desktop) {
+        @content;
+    }
+}
+
+@mixin boton($bgColor, $colorTexto) {
+    background-color: $bgColor;
+    padding: 1.5rem 4rem;
+    color: $colorTexto;
+    font-size: 1.8rem;
+    border-radius: 0.5rem;
+    font-weight: 700;
+    border: none;
+    transition-property: background-color;
+    transition-duration: .3s;
+    text-align: center;
+    width: 100%;
+    display: inline-block;
+
+    &:hover {
+        background-color: color.adjust($bgColor, $lightness: -10%);
+        cursor: pointer;
+    }
+}
+
+@mixin grid($columnas, $espaciado ) {
+    display: grid;
+    gap: $espaciado;
+    grid-template-columns: repeat($columnas, 1fr);
+}
+
+@mixin contenedor {
+    width: min(95%, 130rem);
+    margin: 0 auto;
+}
+
+@mixin contenedor-m {
+    width: min(95%, 60rem);
+    margin: 0 auto;
+}
+
+@mixin contenedor-b {
+    width: min(95%, 52rem);
+    margin: 0 auto;
+}
+
+@mixin contenedor-sm {
+    width: min(95%, 45rem);
+    margin: 0 auto;
+}
+
+@mixin headings {
+    text-align: center;
+    margin: 2rem 0;
+    font-weight: v.$fw-black;
+    font-family: v.$fuente-principal;
+}
+
+@mixin nombre-pagina {
+    @include headings;
+    margin: 3rem 0 3rem 0;
+    text-align: center;
+}
+
+@mixin descripcion-pagina {
+    font-size: 1.8rem;
+    text-align: center;
+    color: v.$gris-oscuro;
+    font-weight: v.$fw-light;
+    margin-bottom: 5rem;
+}
+
+@mixin texto-fluido($min, $max){
+    font-size: clamp($min, 10vw, $max);
+}
+
+@mixin logo{
+    font-size: clamp(2rem, 10vw, 3.5rem);
+    color: v.$blanco;
+    margin: 0;
+}
+
+@mixin texto-degradado($inicio, $final){
+    background: linear-gradient(to right, $inicio 0%, $final 60%);
+    color: transparent;
+    background-clip: text;
+}
+
+@mixin menu-redes($color, $size){
+    &__enlace{
+    max-height: 3rem;
+        &::before{
+            color: $color;
+            font-size: $size;
+            display: inline-block;
+            font-style: normal;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+            font-family: "Font Awesome 6 Brands";
+        }
+        &:hover::before {
+            text-shadow: 2px 3px 5px rgba(0,0,0,0.5);
+        }
+        &[href*="facebook.com"]::before {
+            content: "\f39e";
+        }
+        &[href*="github.com"]::before {
+            content: "\f09b";
+        }
+        &[href*="tiktok.com"]::before {
+            content: "\e07b";
+        }
+        &[href*="instagram.com"]::before {
+            content: "\f16d";
+        }
+        &[href*="youtube.com"]::before {
+            content: "\f167";
+        }
+        &[href*="x.com"]::before {
+            content: "\e61b";
+        }    
+    }
+    &__ocultar{
+        display: none;
+    }
+}
+
+@mixin enlace {
+    all: unset;
+    padding: 2rem;
+    color: v.$blanco;
+    font-size: 1.5rem;
+    font-weight: v.$fw-bold;
+    text-transform: uppercase;
+    &:hover{
+        background: linear-gradient(to right, #2f2f2f, #4b4b4b);
+        color: color.adjust(v.$azul, $lightness: 20%);
+        cursor: pointer;
+    }
+}
+
+@mixin shadow {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+@mixin reset-liststyle{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+@mixin tags{
+    @include reset-liststyle;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    > li{
+        padding: 1rem;
+        background-color: v.$azul;
+        color: v.$blanco;
+        border-radius: 1rem;
+        cursor: pointer;
+    }
+}
+
+@mixin card{
+    border: 1px solid v.$gris;
+    padding: 3rem;
+    &__nombre{
+        text-align: center;
+    }
+    &__lista{
+        @include reset-liststyle;
+    }
+}
+
+@mixin bg-gradient($color){
+    background: linear-gradient(to left top, $color, color.adjust($color, $lightness: 30%));
+}

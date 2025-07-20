@@ -1,0 +1,129 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+@use 'sass:color';
+
+.dashboard{
+    background-color: v.$gris-claro;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    
+    &__grid{
+        display: flex;
+        flex: 1;
+        overflow-y: auto;
+    }
+
+    &__header{
+        background-color: v.$gris-oscuro;
+    }
+
+    &__header-grid{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        @include m.tablet{
+            margin: 0 3rem;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center
+        }
+    }
+
+    &__logo{
+        padding: 2rem 0;
+        @include m.logo;
+        @include m.tablet{
+            padding: unset;
+        }
+        &:hover{
+            @include m.texto-degradado(v.$azul, color.adjust(v.$azul, $lightness: 30%));
+        }
+    }
+    
+    &__form{
+        display: flex;
+    }
+
+    &__submit--logout{
+        @include m.enlace;
+        flex: 1;
+        @include m.tablet{
+            padding: 1.5rem;
+        }
+    }
+
+    &__sidebar{
+        background-color: color.adjust(v.$gris-oscuro, $lightness: 10%);
+    }
+    
+    &__menu{
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__enlace{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;
+        padding: 2rem 3rem 2rem 2rem;
+        font-size: 2rem;
+        color: color.adjust(v.$gris-oscuro, $lightness: 40%);
+        transition: 300ms background-color ease-in-out, 300ms color ease-in-out;
+        &:hover, &--actual{
+            color: v.$blanco;
+            background-color: color.adjust(v.$gris-oscuro, $lightness: 30%);
+        }
+    }
+    
+    &__iconos{
+        font-size: 2.8rem;
+
+    }
+    
+    &__menu-texto{
+        font-size: 1.5rem;
+        text-transform: uppercase;
+    }
+
+    &__contenido{
+        width: 100%;
+        padding: 1rem 2rem;
+        overflow-y: scroll;
+        @include m.tablet{
+            padding: 2rem 4rem;
+        }
+    }
+
+    &__contenedor-boton{
+        display: flex;
+        margin-bottom: 2rem;
+        @include m.tablet{
+            justify-content: flex-end;
+        }
+    }
+    &__boton{
+        @include m.boton(v.$azul, v.$blanco);
+        @include m.tablet{
+            width: auto;
+        }
+    }
+
+    &__contenedor{
+        @include m.shadow;
+        background-color: v.$blanco;
+        padding: 2rem;
+        border-radius: 1rem;
+    }
+
+    &__formulario{
+        @extend .dashboard__contenedor;
+        @include m.contenedor-m;
+    }
+
+    &__grafica{
+        @include m.contenedor-m
+    }
+
+}

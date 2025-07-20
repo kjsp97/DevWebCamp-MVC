@@ -1,0 +1,50 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+@use 'sass:color';
+
+.table{
+    width: 100%;
+    border-collapse: collapse;
+
+    &__head{
+        color: v.$blanco;
+    }
+    
+    &__th{
+        padding: 1rem;
+        background-color: v.$gris-oscuro;
+        text-align: left;
+        
+    }
+
+    &__tr{
+        &:nth-of-type(even){
+            background-color: v.$gris-claro;
+        }
+    }
+    &__td{
+        padding: 1.5rem 1rem;
+        &--acciones{
+            @extend .table__td;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 2rem;
+        }
+    }
+    &__accion{
+        all: unset;
+        display: inline-block;
+        text-transform: uppercase;
+        &--editar{
+            color: v.$azul;
+        }
+        
+        &--eliminar{
+            color: v.$rojo;
+        }
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}

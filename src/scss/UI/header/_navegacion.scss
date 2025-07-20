@@ -1,0 +1,33 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+@use 'sass:color';
+
+
+.header__navegacion{
+    display: flex;
+    flex-direction: column;
+    @include m.tablet{
+        flex-direction: row;   
+    }   
+}
+
+.header__enlace{
+    @include m.enlace;
+    @include m.tablet{
+        padding: 1.5rem;
+    }
+    &--activo{
+        background: linear-gradient(to right, #282828, #303030);
+        color: color.adjust(v.$azul, $lightness: 25%);
+        cursor: pointer;
+    }
+}
+
+.header__form{
+    display: flex;
+}
+
+.header__submit{
+    flex: 1;
+    @extend .header__enlace;
+}
