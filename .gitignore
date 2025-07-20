@@ -1,6 +1,5 @@
-vendor
 src/img/
-composer.json
-composer.lock
 node_modules
+vendor
+.DS_Store
 .env
