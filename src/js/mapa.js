@@ -5,8 +5,8 @@ if (document.querySelector('#mapa')) {
 
     const map = L.map('mapa', { scrollWheelZoom: false }).setView([lat, long], zoom);
 
-    L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png', {
-        attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a> & OpenStreetMap contributors'
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
     }).addTo(map);
 
     L.marker([lat, long]).addTo(map)
