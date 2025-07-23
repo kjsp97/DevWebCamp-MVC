@@ -39,7 +39,7 @@ class RegistradosController {
         }
         
         $router->render('admin/registrados/index', [
-            'titulo' => 'Panel de Ponentes',
+            'titulo' => 'Panel de Registrados',
             'registros' => $registros,
             'paginacion' => $paginacion->paginacion()
         ]);
